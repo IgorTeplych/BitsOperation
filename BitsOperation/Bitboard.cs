@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BitsOperation
 {
-    public static class ChessField
+    public static class Bitboard
     {
         public static (int, ulong) KingSteps(int pos)
         {
@@ -66,41 +66,44 @@ namespace BitsOperation
 
             ulong mask = line ^ column;
 
-            return (BitsCount(1UL << pos), mask);
+            return (BitsCount(mask), mask);
         }
 
-        public static (int, ulong) ElephantSteps(int pos = 52)
+        public static (int, ulong) ElephantSteps(int pos)
         {
             ulong mask1 = 0x102040810204080;
             int shift = (pos % 8) - (7 - (pos / 8));
-            if (shift >= 0)
+
+            if (shift > 0)
             {
-                mask1 = (mask1 << shift) & 0xfffefcf8f0e0c080UL;
+                mask1 = (mask1 << shift) & 0xfefcf8f0e0c08000;
             }
-            else
+            if(shift < 0)
             {
-                mask1 = (mask1 >> Math.Abs(shift)) & 0x103070f1f3f7fUL;
+                mask1 = (mask1 >> Math.Abs(shift)) & 0x103070f1f3f7f;
             }
 
             ulong mask2 = 0x8040201008040201;
             int shift2 = (pos % 8) - (pos / 8);
-            if (shift2 >= 0)
+
+            if (shift2 > 0)
             {
-                mask2 = (mask2 << shift2) & 0x80c0e0f0f8fcfeffUL;
+                mask2 = (mask2 << shift2) & 0x80c0e0f0f8fcfeUL;
             }
-            else
+            if(shift2 < 0)
             {
                 mask2 = (mask2 >> Math.Abs(shift2)) & 0x7f3f1f0f07030100UL;
             }
 
-            return (BitsCount(1UL << pos), mask1 ^ mask2);
+            var vr = mask1 ^ mask2;
+            return (BitsCount(mask1 ^ mask2), mask1 ^ mask2);
         }
 
         public static (int, ulong) QueenSteps(int pos)
         {
             ulong mask1 = TowerSteps(pos).Item2;
             ulong mask2 = ElephantSteps(pos).Item2;
-            return (BitsCount(1UL << pos), mask1 ^ mask2);
+            return (BitsCount(mask1 ^ mask2), mask1 ^ mask2);
         }
 
         public static int BrutalBitsCount(ulong num)
