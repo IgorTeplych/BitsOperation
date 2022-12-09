@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOperation", "BitsOperation\BitsOperation.csproj", "{3CD3C020-7243-4A0A-AC32-17B907F72391}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsOperation.Tests", "BitsOperation.Tests\BitsOperation.Tests.csproj", "{9754237C-B5A3-4EF9-8422-9B0553B8419D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3CD3C020-7243-4A0A-AC32-17B907F72391}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CD3C020-7243-4A0A-AC32-17B907F72391}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CD3C020-7243-4A0A-AC32-17B907F72391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9754237C-B5A3-4EF9-8422-9B0553B8419D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9754237C-B5A3-4EF9-8422-9B0553B8419D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9754237C-B5A3-4EF9-8422-9B0553B8419D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9754237C-B5A3-4EF9-8422-9B0553B8419D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
